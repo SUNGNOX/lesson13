@@ -1,0 +1,30 @@
+{% extends 'base.html' %}<!-- 加载模板 -->
+{% import 'macro/_macro.html' as inm %}<!-- 加载宏页 -->
+
+{% block title %}首页{% endblock %}
+
+{% block content_page %}
+    <div class="container">
+        <form>
+            <div>
+                <label for="username">用**户</label>
+                {{ inm.input('username') }}<!-- 引用宏input -->
+            </div>
+            <div>
+                <label for="username">密**码</label>
+                {{ inm.input('passwd', 'passwd') }}<!-- 引用宏input -->
+            </div>
+        </form>
+        <h2>定义测试函数</h2>
+        {% set link={'href':url_for('.context'), 'label':'Context'} %}
+        {% if link is jump_url %}
+            <a href="http://www.baidu.com" target="_blank">About</a>
+        {% endif %}
+        <h2>过滤函数</h2>
+        {{ name|safe }}
+        {{ body|md|safe }}
+        <h2>上下文处理器</h2>
+        {{readfile('requirement.txt')|md|safe }}
+    </div>>
+{% endblock content_page %}
+

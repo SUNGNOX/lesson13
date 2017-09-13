@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}服务页{% endblock %}
+{% block content %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" >
+            <input type="submit" name="submit">
+        </form>
+    </div>
+{% endblock content %}

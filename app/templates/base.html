@@ -1,0 +1,39 @@
+<!-- 模板页 -->
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" >
+{% endblock %}
+
+
+{% block navbar %}
+    <div class="container">
+        {{ nav.top.render() }}
+        <!--a class="navbar-brand" href="/">Flasky</a-->
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        {% block start %}
+            <h2>这里是首页，welcome!!!</h2>
+        {% endblock start %}
+    </div>
+
+    <div class="container">
+        {% block content_page %}{% endblock content_page %}
+    </div>
+
+    <div class="container">
+        {% block end %}
+            <h4>这里是尾页，welcome</h4>
+        {% endblock end %}
+    </div>
+
+{% endblock content %}
+
+
+

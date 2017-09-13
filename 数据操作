@@ -1,0 +1,29 @@
+#CMD在工作路径下键入
+python manager.py shell #模拟一个终端
+#导入模块
+from app import db
+from app import models
+#创建数据库
+db.create_all()
+#用pycharm内建的数据库管理工具(可视化工具)连接新建数据库，可以实现数据库的可视化
+#数据库操作
+from app.models import Role, User
+admin = Role(name='admains')
+mod = Role(name='moderate')
+db.session.add_all([admin, mod])
+db.session.commit()
+
+sun = User(name='sunxiong', role=admin)
+sun.passwd = 123456789
+zhang = User(name='zhangsan', role=mod)
+db.session.add([sun, zhang])
+db.session.commit()
+
+db.session.delete(zhang)
+#数据表查询
+#query
+User.query.all()
+User.query.get(1)#1为id
+User.query.get(1).name
+User.query.filter(id==1)
+
